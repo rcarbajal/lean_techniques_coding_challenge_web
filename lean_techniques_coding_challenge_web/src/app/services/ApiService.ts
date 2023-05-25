@@ -12,14 +12,16 @@ export default class ApiService {
         this.apiUrl = process.env.API_URL as string;
     }
 
-    public async getPhotoAlbum(albumId: number = 1): Promise<Photo[]> {
+    public async getPhotoAlbum(albumId: number = 0): Promise<Photo[]> {
         let photos: Photo[] = [];
 
-        try {
-            photos = await this.fetchLocal(`${this.apiUrl}?albumId=${albumId}`, 'GET');
-        }
-        catch(err: any) {
-            console.log(err);
+        if (albumId > 0) {
+            try {
+                photos = await this.fetchLocal(`${this.apiUrl}?albumId=${albumId}`, 'GET');
+            }
+            catch(err: any) {
+                console.log(err);
+            }
         }
 
         return photos;
