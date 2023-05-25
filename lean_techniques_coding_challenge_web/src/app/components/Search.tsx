@@ -42,7 +42,7 @@ export default function Search({ albumId, photos, error }: { albumId: string, ph
             <h1 className='font-bold text-2xl'>Lean Techniques Showcase: Photo Album, web version</h1><br />
             <div className="w-full max-w-5xl items-center">
                 <input type='text' id='searchBox' placeholder='Search by Album ID' defaultValue={_albumId} /> &nbsp;&nbsp;
-                <input type='button' value='Search' className='bg-slate-400 text-white px-4' onClick={handleSearch} /> &nbsp;&nbsp;
+                <button id='searchButton' className='bg-slate-400 text-white px-4' onClick={handleSearch}>Search</button> &nbsp;&nbsp;
                 <span className='text-rose-600'>{message}</span>
             </div>
             <div className='flex-1 w-full mt-5'>

@@ -1,5 +1,6 @@
 import { resetAxios } from "./mockAxios"
 import { mockIntersectionObserver } from "./mockIntersectionObserver";
+import { resetRouter } from "./mockRouter";
 
 beforeAll(() => {
     mockIntersectionObserver();
@@ -7,4 +8,5 @@ beforeAll(() => {
 
 afterEach(() => {
     resetAxios();
+    resetRouter();
 });
