@@ -1,20 +1,27 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+### 1. Prerequisites
+- Install [node.js](https://nodejs.org/en) and [npm](https://www.npmjs.com/)
+- Install node packages by opening a command-line terminal and navigating to the `lean_techniques_coding_challenge_web` folder. Run the following command to install all project requirements:
+```bash
+npm install
+```
+### 2. Environment configuration
+Copy the `.env.example` file to `.env`. Update the containing environment variables as needed. The available variables are as follows:<br /><br />
+
+`API_URL`: URI Location of the backend API service. By default this should be set to `https://jsonplaceholder.typicode.com/photos` and will point to the default location of the photo album API.<br /><br />
+
+`DEFAULT_TIMEOUT`: Default timeout time in milliseconds for requests made to the API service. By default, this timeout is set to 30 seconds.
+
+### 3. Run the app
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
