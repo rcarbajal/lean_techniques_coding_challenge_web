@@ -7,13 +7,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 npm install
 ```
 ### 2. Environment configuration
-Copy the `.env.example` file to `.env`. Update the containing environment variables as needed. The available variables are as follows:<br /><br />
+Copy the `.env.example` file to `.env`. Update the containing environment variables as needed. The available variables are as follows:
 
-`API_URL`: URI Location of the backend API service. By default this should be set to `https://jsonplaceholder.typicode.com/photos` and will point to the default location of the photo album API.<br /><br />
+`API_URL`: URI Location of the backend API service. By default this should be set to `https://jsonplaceholder.typicode.com/photos` and will point to the default location of the photo album API.
 
 `DEFAULT_TIMEOUT`: Default timeout time in milliseconds for requests made to the API service. By default, this timeout is set to 30 seconds.
 
-### 3. Run the app
+### 3. Run the website
 
 First, run the development server:
 
@@ -24,6 +24,18 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+### 4. Using the website
+
+Upon loading up the home page, you should be presented with a search box and a "Search" button. Enter an integer into the search box and press "Search." If a valid album ID was entered, the page will display a list of search results for you to browse. Click on any results row to display the associated title and image in a modal window.
+
+### 5. Running tests
+
+Open a command terminal and navigate to the `lean_techniques_coding_challenge_web` folder. Run the following command to execute all unit tests.
+
+```bash
+npm run test
+```
 
 ## Learn More
 
