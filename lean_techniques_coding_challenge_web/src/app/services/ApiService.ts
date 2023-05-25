@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
-import { HttpMethod } from '../types/APITypes';
+import { ApiResponse, HttpMethod } from '../types/APITypes';
 import { Photo } from '../models/Photo';
 
 
@@ -12,19 +12,24 @@ export default class ApiService {
         this.apiUrl = process.env.API_URL as string;
     }
 
-    public async getPhotoAlbum(albumId: number = 0): Promise<Photo[]> {
-        let photos: Photo[] = [];
+    public async getPhotoAlbum(albumId: number = 0): Promise<ApiResponse<Photo[]>> {
+        let response: ApiResponse<Photo[]> = {};
 
         if (albumId > 0) {
             try {
-                photos = await this.fetchLocal(`${this.apiUrl}?albumId=${albumId}`, 'GET');
+                const photos = await this.fetchLocal(`${this.apiUrl}?albumId=${albumId}`, 'GET');
+                response = {
+                    data: photos
+                }
             }
             catch(err: any) {
-                console.log(err);
+                response = {
+                    message: err.message
+                }
             }
         }
 
-        return photos;
+        return response;
     }
 
     private async fetchLocal(
@@ -56,7 +61,7 @@ export default class ApiService {
                 response = await axios.delete(path, requestConfig);
                 break;
         }
-    
+
         if (!(response.status >= 200 && response.status <= 299)) {
             switch (response.status) {
                 case 408:
@@ -64,6 +69,8 @@ export default class ApiService {
                     this.onTimeoutCallback?.();
                     break;
             }
+
+            throw new Error(response.data ?? response.statusText);
         }
 
         return response.data;

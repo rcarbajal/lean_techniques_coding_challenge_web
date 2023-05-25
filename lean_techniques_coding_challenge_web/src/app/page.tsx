@@ -14,7 +14,11 @@ export default async function Home({ params, searchParams }: {
   try {
     if (!isNaN(albumId) && albumId > 0) {
       const apiService = new ApiService();
-      photos = await apiService.getPhotoAlbum(albumId);
+      const response = await apiService.getPhotoAlbum(albumId);
+      if (response.data)
+        photos = response.data;
+      else
+        errorMessage = response.message ?? 'An error occurred while attempting to retrieve photo album information';
     }
   }
   catch(err: any) {
